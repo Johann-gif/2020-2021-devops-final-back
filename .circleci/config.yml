@@ -76,10 +76,10 @@ jobs:
           name: Publish app to docker hub
           command: |
             docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
-            docker tag app $DOCKER_HUB_USERNAME/tp-devops-final-api:$CIRCLE_BUILD_NUM
-            docker tag app $DOCKER_HUB_USERNAME/tp-devops-final-api:latest
-            docker push $DOCKER_HUB_USERNAME/tp-devops-final-api:$CIRCLE_BUILD_NUM
-            docker push $DOCKER_HUB_USERNAME/tp-devops-final-api:latest
+            docker tag app $DOCKER_HUB_USERNAME/tp-devops-final-back:$CIRCLE_BUILD_NUM
+            docker tag app $DOCKER_HUB_USERNAME/tp-devops-final-back:latest
+            docker push $DOCKER_HUB_USERNAME/tp-devops-final-back:$CIRCLE_BUILD_NUM
+            docker push $DOCKER_HUB_USERNAME/tp-devops-final-back:latest
 
 
 workflows:
@@ -90,15 +90,13 @@ workflows:
           requires:
             - build
       - deploy-heroku:
-          context: Heroku
           requires: 
             - build
-            # - test (We don't require test as there's a problem with them atm)
+            # - test
       - docker-build-push:
-          context: Docker
           requires: 
             - build
-            # - test (We don't require test as there's a problem with them atm)
+            # - test
 
 
 
