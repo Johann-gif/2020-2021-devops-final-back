@@ -62,3 +62,5 @@ In your production environment, make sure the `FLASK_DEBUG` environment
 variable is unset or is set to ``0``, so that `ProdConfig` is used, and
 set `DATABASE_URL` which is your postgresql URI like for example 
 `postgresql://localhost/example`
+
+### PROJET TERMINE !
