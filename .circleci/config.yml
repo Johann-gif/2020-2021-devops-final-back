@@ -86,17 +86,15 @@ workflows:
   build_test_deploy:
     jobs:
       - build
-      - test:
-          requires:
-            - build
+      # - test:
+      #     requires:
+      #       - build
       - deploy-heroku:
           requires: 
             - build
-            # - test
       - docker-build-push:
           requires: 
             - build
-            # - test
 
 
 
